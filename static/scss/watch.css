@@ -1,0 +1,365 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.main_page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #161616;
+}
+
+/* section .circle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: #e51e2a; */
+/* background: #2fa4ff;
+  clip-path: circle(70% at right 120%);
+  right: 0;
+  top: 60px;
+} */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  position: relative;
+  max-width: 150px;
+}
+
+header .navigation {
+  position: relative;
+  display: flex;
+}
+
+header .navigation li {
+  list-style: none;
+}
+
+header .navigation li a {
+  display: inline-block;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  transition: ease-in-out;
+}
+
+header .navigation li a:hover {
+  color: #c9d6df;
+}
+
+.content .textBox {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.main_page .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  margin-top: 3.5rem;
+}
+
+.main_page .content .textBox {
+  position: relative;
+  transition: 0.5s;
+}
+
+.main_page .content .textBox h1 {
+  font-size: 2.7rem;
+  font-weight: normal;
+  text-shadow: none;
+  color: #fff;
+}
+
+.main_page .content .textBox h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 1rem 0;
+}
+
+.main_page .content .textBox ul li {
+  font-size: 1rem;
+  margin-left: 1.1rem;
+}
+
+.main_page .content .textBox .price {
+  font-size: 2rem;
+  margin: 1.5rem 0;
+  color: #2fa4ff;
+  display: block;
+  position: relative;
+}
+
+.main_page .content .textBox .price::after {
+  content: attr(data-text);
+  color: #f0f0f0;
+  font-size: 1.2rem;
+  text-decoration: line-through;
+  position: absolute;
+  top: 0;
+  left: 10rem;
+}
+
+.main_page .content .textBox .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 23rem;
+}
+
+.main_page .content .textBox .buttons button {
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  background: #f0f0f0;
+  color: #2fa4ff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  height: 3rem;
+  width: 10rem;
+  box-shadow: 0.1rem 0.1rem 0.3rem #f0f0f0;
+}
+
+.main_page .content .textBox .buttons button:hover {
+  background: #2fa4ff;
+  color: #f0f0f0;
+}
+
+/* Image Styling */
+
+.content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: cetner;
+}
+
+.content .textBox {
+  position: relative;
+  max-width: 600px;
+}
+
+.content .textBox h1 {
+  font-size: 2.5rem;
+}
+
+.content .imgBox {
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  margin-top: 50px;
+}
+
+.content .imgBox img {
+  max-width: 340px;
+}
+
+/* Not Necessary to Include */
+.thumb {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.thumb li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.thumb li:hover {
+  transform: translateY(-15px);
+}
+
+/* 
+  .thumb li img{
+    max-width: 100px;
+  }
+ */
+
+.thumb li img {
+  max-width: 75px;
+}
+/* Till here not necessary */
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2fa4ff;
+  /* This looks cool too */
+  clip-path: circle(600px at right);
+
+  /* clip-path: circle(600px at right 800px); */
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 40px;
+  }
+
+  .main_page {
+    padding: 50px;
+  }
+
+  .main_page .content {
+    padding-top: 60px;
+    flex-wrap: wrap;
+  }
+
+  .main_page .content .textBox h1 {
+    font-size: 2rem;
+  }
+
+  .main_page .content .textBox h3 {
+    font-size: 1rem;
+  }
+
+  .main_page .content .textBox ul li {
+    font-size: 0.8rem;
+  }
+
+  .main_page .content .textBox .price {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+
+  .main_page .content .textBox .price::after {
+    color: #dbe2ef;
+    font-size: 0.9rem;
+  }
+
+  .content .imgBox img {
+    max-width: 200px;
+  }
+
+  .main_page .content .textBox .buttons {
+    width: 18rem;
+  }
+
+  .main_page .content .textBox .buttons button {
+    height: 2rem;
+    width: 7rem;
+  }
+
+  .main_page .content .textBox .buttons button:hover {
+    background: black;
+    color: #fff;
+  }
+  /* 
+  .thumb {
+    position: fixed;
+    padding-top: 50px;
+  } */
+
+  section {
+    padding: 150px 40px;
+  }
+
+  header .navigation {
+    display: none;
+  }
+
+  header .navigation.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #e51e2a; */
+    background: #2fa4ff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  header .navigation li a {
+    margin: 10px 0px;
+    font-size: 1.5em;
+    font-weight: 300;
+  }
+
+  header .navigation li a:hover {
+    color: #161616;
+  }
+
+  .thumb {
+    display: none;
+  }
+
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: url(/assets/menu.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  .toggle.active {
+    position: fixed;
+    right: 40px;
+    background: url(/assets/close.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .circle {
+    clip-path: circle(400px at right);
+  }
+}
+/* 
+@media (max-width: 700px) {
+  .thumb {
+    padding-top: 50px;
+  }
+} */

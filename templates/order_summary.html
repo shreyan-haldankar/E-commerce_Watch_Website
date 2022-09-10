@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+</head>
+
+<body> {% endcomment %}
+
+{% block content %}
+{% load static %}
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+        <div class="table-responsive text-nowrap">
+            <h2>Order Summary Table</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+
+                  <th scope="col">Item Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total Item Price</th>
+          
+                </tr>
+              </thead>
+              <tbody>
+                {% for order_item in object.items.all %}
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>{{order_item.item.title}}</td>
+                  <td>{{order_item.item.price}}</td>
+                  <td>{{order_item.quantity}}</td>
+                  <td>Rs.{% if order_item.item.discount_price %}
+                    {{order_item.get_total_discount_item_price}}/- 
+                    <span class="badge badge-primary">
+                    Saving Rs.{{order_item.get_amount_saved}}</span>
+                    {% else %}
+                    {{order_item.get_total_item_price}}/-
+                    {% endif %}</td>
+
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="4"><strong>Order Total</strong></td>
+                    <td><strong>Rs.{{object.get_total}}/-</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <a class="btn btn-warning float-right ml-2" href="{% url 'checkout' %}">Proceed To Checkout</a>
+                        <a class="btn btn-primary float-right " href="{% url 'products' %}">Continue Shopping</a>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          
+          </div>
+
+
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+
+  {% endblock content %}

@@ -1,0 +1,215 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      <title>{% block head_title %}{% endblock %}</title>
+      {% block extra_head %}
+      {% endblock %}
+    
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet" />
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'scss/main.css' %}" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'assets/favicon.ico' %}"
+    />
+
+
+    <style type="text/css">
+      html,
+      body,
+      header,
+      .carousel {
+        height: 60vh;
+      }
+  
+      @media (max-width: 740px) {
+  
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+  
+      @media (min-width: 800px) and (max-width: 850px) {
+  
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+  
+    </style>
+
+  </head>
+
+
+
+  <body>
+    {% include 'navbar.html' %}
+    <div class="mt-5 pt-4">
+    
+    {% if messages %}
+
+    {% for message in messages %}
+    {% comment %} <div class="alert alert-{{ message.tags }}" role="alert">
+      {{message}}</a>
+    </div> {% endcomment %}
+
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+
+{% endif %}
+</div>
+    {% comment %} Header {% endcomment %} {% comment %}
+    <section class="page_1">
+      <header>
+        <a href="#" class="logo">
+          <img
+            src="{% static 'assets/logo.png' %}"
+            width="200px"
+            height="65px"
+            alt="FOSSIL"
+          />
+        </a>
+
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="#">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact_us">Contact</a></li>
+        </ul>
+      </header>
+    </section>
+    {% endcomment %} {% block content %} 
+    
+    {% endblock content %} {% comment %}
+    Footer {% endcomment %} {% comment %}
+    <section class="background_video" id="contact_us">
+      <video
+        src="{% static 'assets/fossil_intro_final.mp4' %}"
+        width="100%"
+        muted
+        loop
+        autoplay
+      ></video>
+
+      <div class="overlay"></div>
+
+      <div class="text">
+        <div class="container">
+          <div class="row">
+            <div class="footer-col-1">
+              <h3>Download Our App</h3>
+              <p>Download app for Android and iOS device.</p>
+              <div class="app-logo">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.fossil.wearables.fossil&hl=en_IN&gl=US"
+                  ><img src="{% static 'assets/play-store.png' %}" alt="" /></a
+                ><a
+                  href="https://apps.apple.com/in/app/fossil-hybrid-smartwatches/id1027370544"
+                  ><img src="{% static 'assets/app-store.png' %}" alt=""
+                /></a>
+              </div>
+            </div>
+            <div class="footer-col-2">
+              <!-- <img src="assets/logo.png" alt="" /> -->
+              <p>
+                We create distinctive watches, wearables and accessories with
+                some of the greatest brands in the world.
+              </p>
+            </div>
+            <div class="footer-col-3">
+              <h3>Useful Links</h3>
+              <ul>
+                <li>
+                  <a href="https://www.fossilgroup.com/brands/">Brands</a>
+                </li>
+                <li><a href="https://www.fossilgroup.com/">Fossil Group</a></li>
+                <li>
+                  <a href="https://www.fossil.com/en-in/store-locator.html"
+                    >Store Locator</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.fossilgroup.com/brands/">About Us</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-col-4">
+              <h3>Follow Us</h3>
+              <ul>
+                <li>
+                  <a
+                    href="https://twitter.com/Fossil?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                    >Twitter</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/Fossil/ ">Facebook</a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/fossil/?hl=en"
+                    >Instagram</a
+                  >
+                </li>
+                <li><a href="https://www.youtube.com/fossil">YouTube</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endcomment %}
+    {% block extra_body %}
+    {% endblock %}
+
+
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+  
+    </script>
+  </body>
+</html>

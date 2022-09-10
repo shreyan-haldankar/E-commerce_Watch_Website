@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<h1>Items are as follows</h1>
+<br>
+{% for item in items %}
+<p>{{item.title}}</p>
+<br>
+{% endfor %}
+
+{% endblock content %}
+
+
+
