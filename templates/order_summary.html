@@ -68,28 +68,45 @@
                   <th scope="row">{{forloop.counter}}</th>
                   <td>{{order_item.item.title}}</td>
                   <td>{{order_item.item.price}}</td>
-                  <td>{{order_item.quantity}}</td>
+                  <td>
+                    <a href="{% url 'remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                    {{order_item.quantity}} 
+                    <a href="{% url 'add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                  </td>
                   <td>Rs.{% if order_item.item.discount_price %}
                     {{order_item.get_total_discount_item_price}}/- 
                     <span class="badge badge-primary">
                     Saving Rs.{{order_item.get_amount_saved}}</span>
                     {% else %}
                     {{order_item.get_total_item_price}}/-
-                    {% endif %}</td>
+                    {% endif %}
+                    <a style="color:red;" href="{% url 'remove-from-cart' order_item.item.slug %}"><i class="fas fa-trash float-right"></i></a></td>
+
 
                 </tr>
-                {% endfor %}
+                {% empty %}
+                <tr>
+                  <td colspan="5">Your Cart is Empty</td>
+                </tr>
+                <tr>
+                  <td colspan="5">
+                       <a class="btn btn-primary float-right " href="{% url 'products' %}">Continue Shopping</a>
+                  </td>
+              </tr>
 
+                {% endfor %}
+                {% if object.get_total %}
                 <tr>
                     <td colspan="4"><strong>Order Total</strong></td>
                     <td><strong>Rs.{{object.get_total}}/-</strong></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
                         <a class="btn btn-warning float-right ml-2" href="{% url 'checkout' %}">Proceed To Checkout</a>
-                        <a class="btn btn-primary float-right " href="{% url 'products' %}">Continue Shopping</a>
+                        <a class="btn btn-primary float-right" href="{% url 'products' %}">Continue Shopping</a>
                     </td>
                 </tr>
+                {% endif %}
               </tbody>
             </table>
           
