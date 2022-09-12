@@ -62,6 +62,8 @@ class CheckoutView(View):
 # def productItem(request):
 #     context = {}
 #     return render(request, "product-page.html", context)
+def HomeView(request):
+    return render(request,'home.html')
 
 
 class ProductsView(ListView):

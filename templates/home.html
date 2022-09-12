@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WatchX</title>
+<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'scss/main.css' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static '/assets/favicon.ico' %}" />
+
+</head>
+
+<body>
+    
+
+<section class="page_1">
+    <div class="circle"></div>
+    <header>
+      <a href="#" class="logo">
+        <img src="{% static 'assets/logo.png' %}" width="200px" height="65px" alt="FOSSIL" />
+      </a>
+
+      <div class="toggle" onclick="toggleMenu()"></div>
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact_us">Contact</a></li>
+      </ul>
+    </header>
+
+    <div class="content">
+      <div class="textBox">
+        <h1 class="motto">Fashion Meets Technology. Purpose Meets Impact.</h1>
+        <p>
+          We’re home to a collection of global brands, connecting people to
+          what matters most … time. Time to think differently. Time to see the
+          good in every detail. Time to express individuality. Time to make
+          the world greater, together.
+        </p>
+        <a href="{% url 'products' %}">Learn More</a>
+      </div>
+
+      <!-- Swiping Animation -->
+
+      <div class="imgBox">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="{% static 'assets/watch1.png' %}" />
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'assets/watch2.png' %}" />
+            </div>
+            <div class="swiper-slide">
+              <img src="{% static 'assets/watch3.png' %}" />
+            </div>
+            <!-- <div class="swiper-slide">
+              <img src="assets/watch4.png" />
+            </div> -->
+            <div class="swiper-slide">
+              <img src="{% static 'assets/watch5.png' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured" id="products">
+    <div class="container">
+      <h2 id="featured-products" class="section-title">Featured Products</h2>
+      <div class="split">
+        <a href="watches/watch1.html" class="featured__items">
+          <img src="{% static 'assets/watch1.png' %}" alt="" class="featured_img" />
+          <p class="featured_details">
+            <span class="price">Rs.9999/-</span>
+            Grant Chronograph Navy Leather Watch
+          </p>
+        </a>
+        <a href="watches/watch2.html" class="featured__items">
+          <img src="{% static 'assets/watch2.png' %}" alt="" class="featured_img" />
+          <p class="featured_details">
+            <span class="price">Rs.11,999/-</span>
+            Nate Chronograph Black Stainless Steel Watch
+          </p>
+        </a>
+        <a href="watches/watch3.html" class="featured__items">
+          <img src="{% static 'assets/watch3.png' %}" alt="" class="featured_img" />
+          <p class="featured_details">
+            <span class="price">Rs.13,999/-</span>
+            Gen 3 Smartwatch Explorist Stainless Steel
+          </p>
+        </a>
+
+        <!-- {% comment %} <a href="watches/watch1.html" class="featured__items">
+          <img src="assets/watch1.png" alt="" class="featured_img" />
+          <p class="featured_details">
+            <span class="price">Rs.9999/-</span>
+            Grant Chronograph Navy Leather Watch
+          </p>
+        </a>
+
+        <a href="watches/watch1.html" class="featured__items">
+          <img src="assets/watch1.png" alt="" class="featured_img" />
+          <p class="featured_details">
+            <span class="price">Rs.9999/-</span>
+            Grant Chronograph Navy Leather Watch
+          </p>
+        </a> {% endcomment %} -->
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- For Some Features of My product -->
+  <section class="features" id="features">
+    <div class="card">
+      <div class="icon">
+        <img
+          src="{% static 'assets/quality.png' %}"
+          width="250px"
+          height="auto"
+          alt="Feature 1"
+          class="icon"
+        />
+      </div>
+      <div class="content">
+        <h2>Premium Materials</h2>
+        <p>
+          The cases are almost exclusively made from stainless steel.Straps
+          are of stainless steel, silicon, and top-grain leather. Water
+          Resistant upto 100m.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">
+        <img
+          src="{% static 'assets/shipping.png' %}"
+          width="300px"
+          height="auto"
+          alt="Feature 2"
+          class="icon"
+        />
+      </div>
+      <div class="content">
+        <h2>Fast Shipping</h2>
+        <p>
+          Fast, free, and convenient delivery choices on millions of items,
+          exclusively for Fossil Watches.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">
+        <img
+          src="{% static 'assets/quality_assured.png' %}"
+          width="250px"
+          height="auto"
+          alt="Feature 3"
+          class="icon"
+        />
+      </div>
+      <div class="content">
+        <h2>Quality Assurance</h2>
+        <p>
+          Fossil Group has established itself as the leading provider of
+          fashionable and quality wristwatches, boasting wide selection in
+          numerous styles.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background Video -->
+  <section class="background_video" id="contact_us">
+    <video
+      src="{% static 'assets/fossil_intro_final.mp4' %}"
+      width="100%"
+      muted
+      loop
+      autoplay
+    ></video>
+
+    <div class="overlay"></div>
+
+    <div class="text">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Download Our App</h3>
+            <p>Download app for Android and iOS device.</p>
+            <div class="app-logo">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.fossil.wearables.fossil&hl=en_IN&gl=US"
+                ><img src="{% static 'assets/play-store.png' %}" alt="" /></a
+              ><a
+                href="https://apps.apple.com/in/app/fossil-hybrid-smartwatches/id1027370544"
+                ><img src="{% static 'assets/app-store.png' %}" alt=""
+              /></a>
+            </div>
+          </div>
+          <div class="footer-col-2">
+            <!-- <img src="assets/logo.png" alt="" /> -->
+            <p>
+              We create distinctive watches, wearables and accessories with
+              some of the greatest brands in the world.
+            </p>
+          </div>
+          <div class="footer-col-3">
+            <h3>Useful Links</h3>
+            <ul>
+              <li>
+                <a href="https://www.fossilgroup.com/brands/">Brands</a>
+              </li>
+              <li><a href="https://www.fossilgroup.com/">Fossil Group</a></li>
+              <li>
+                <a href="https://www.fossil.com/en-in/store-locator.html"
+                  >Store Locator</a
+                >
+              </li>
+              <li>
+                <a href="https://www.fossilgroup.com/brands/">About Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col-4">
+            <h3>Follow Us</h3>
+            <ul>
+              <li>
+                <a
+                  href="https://twitter.com/Fossil?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  >Twitter</a
+                >
+              </li>
+              <li>
+                <a href="https://www.facebook.com/Fossil/ ">Facebook</a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/fossil/?hl=en"
+                  >Instagram</a
+                >
+              </li>
+              <li><a href="https://www.youtube.com/fossil">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br /><br /><br />
+
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      loop: true,
+    });
+
+    function toggleMenu() {
+      const menuToggle = document.querySelector(".toggle");
+      const navigation = document.querySelector(".navigation");
+      menuToggle.classList.toggle("active");
+      navigation.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

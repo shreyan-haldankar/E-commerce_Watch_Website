@@ -4,7 +4,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="{% url 'products' %}">
+      <a class="navbar-brand waves-effect" href="{% url 'home' %}">
         <strong class="blue-text">Fossil Watches</strong>
       </a>
 
@@ -72,3 +72,27 @@
   </nav>
   <!-- Navbar -->
 
+  {% comment %} <header>
+    <a href="#" class="logo">
+      <img src="{% static 'assets/logo.png' %}" width="200px" height="65px" alt="FOSSIL" />
+    </a>
+
+    <div class="toggle" onclick="toggleMenu()"></div>
+    <ul class="navigation">
+      <li><a href="#">Home</a></li>
+      <li><a href="{% url 'products' %}">Products</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact_us">Contact</a></li>
+    </ul>
+  </header> {% endcomment %}
+
+
+  {% comment %} <script>
+      function toggleMenu() {
+      const menuToggle = document.querySelector(".toggle");
+      const navigation = document.querySelector(".navigation");
+      menuToggle.classList.toggle("active");
+      navigation.classList.toggle("active");
+    }
+  
+  </script> {% endcomment %}

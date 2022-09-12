@@ -1,9 +1,10 @@
 from unicodedata import name
 from django.urls import path, include
-from .views import (add_to_cart,remove_from_cart, OrderSummaryView ,CheckoutView, ProductsView, ItemDetailView, remove_single_item_from_cart)
+from .views import (add_to_cart,remove_from_cart, OrderSummaryView ,CheckoutView, HomeView, ProductsView, ItemDetailView, remove_single_item_from_cart)
 
 urlpatterns = [
     
+    path('', HomeView, name="home"),
 
     path('products/', ProductsView.as_view(), name="products"),
     path('product/<slug>/', ItemDetailView.as_view(), name="product"),
