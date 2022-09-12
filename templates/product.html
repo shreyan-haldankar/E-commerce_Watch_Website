@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}  <!-- Navbar -->
 
@@ -15,7 +15,7 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+          <img src="{% static 'assets/watch3.png' %}" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->
@@ -25,7 +25,7 @@
 
           <!--Content-->
           <div class="p-4">
-
+            <h1>{{object.title}}</h1>
             <div class="mb-3">
               <a href="">
                 <span class="badge purple mr-1">{{object.get_category_display}}</span>
@@ -110,7 +110,7 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+          <img src="{% static 'assets/watch2.png' %}" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->
@@ -118,7 +118,7 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+          <img src="{% static 'assets/watch4.png' %}" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->
@@ -126,7 +126,7 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+          <img src="{% static 'assets/watch1.png' %}" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->
@@ -141,18 +141,7 @@
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
+
 
     <hr class="my-4">
 
@@ -194,8 +183,8 @@
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+      © 2022 Copyright:
+      <a href="https://github.com/shreyan-haldankar/" target="_blank">Shreyan Haldankar </a>
     </div>
     <!--/.Copyright-->
 

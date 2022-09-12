@@ -1,4 +1,5 @@
 {% load cart_template_tags %}
+{% load static %}
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
@@ -7,6 +8,9 @@
       <a class="navbar-brand waves-effect" href="{% url 'home' %}">
         <strong class="blue-text">Fossil Watches</strong>
       </a>
+      {% comment %} <a href="{% url 'home' %}" class="navbar-brand waves-effect logo">
+        <img src="{% static 'assets/logo.png' %}" width="200px" height="65px" alt="FOSSIL" />
+      </a> {% endcomment %}
 
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
