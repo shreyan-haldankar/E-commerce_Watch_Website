@@ -4,11 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from re import template
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Item, Order, OrderItem, BillingAddress
+from .models import Item, Order, OrderItem, BillingAddress, Payment
 from django.views.generic import ListView, DetailView, TemplateView, View
 from django.utils import timezone
 from .forms import CheckoutForm
+from django.conf import settings
+import stripe
+stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
+
 
 # def item_list(request):
 #     items = Item.objects.all()
@@ -58,6 +62,91 @@ class CheckoutView(View):
             messages.error(self.request, "You do not have an active order")
             return redirect('order-summary')
         
+
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        #order
+        return render(self.request, 'payment.html')
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user = self.request.user, ordered = False)
+        amount=int(order.get_total()*100)
+        token = self.request.POST.get('stripeToken')
+        
+        
+        try:
+  # Use Stripe's library to make requests...
+            charge = stripe.Charge.create(
+            amount=amount,
+            currency="usd",
+            source=token,
+            )
+
+            #  create the payment
+            payment  = Payment()
+            payment.stripe_charge_id = charge['id']
+            payment.user = self.request.user
+            payment.amount = order.get_total()
+            payment.save()
+
+            order.ordered = True
+            order.payment = payment
+            order.save()
+            messages.success(self.request, "Your order was successful!")
+            return redirect("/")
+            
+        except stripe.error.CardError as e:
+# Since it's a decline, stripe.error.CardError will be caught
+
+            body = e.json_body
+            err = body.get('error', {})
+            messages.warning(self.request, f"{err.get('message')}")
+            return redirect("/")
+        except stripe.error.RateLimitError as e:    
+            # Too many requests made to the API too quickly
+            messages.warning(self.request, "Rate limit error")
+            return redirect("/")
+
+            
+        except stripe.error.InvalidRequestError as e:
+            messages.warning(self.request, "Invalid parameters")
+            return redirect("/")
+
+
+            # Invalid parameters were supplied to Stripe's API
+            
+        except stripe.error.AuthenticationError as e:
+            messages.warning(self.request, "Not authenticated")
+            return redirect("/")
+
+# Authentication with Stripe's API failed
+        # (maybe you changed API keys recently)
+            pass
+        except stripe.error.APIConnectionError as e:
+            messages.warning(self.request, "Network error")
+            return redirect("/")
+
+
+            # Network communication with Stripe failed
+            
+        except stripe.error.StripeError as e:
+            messages.warning(
+                self.request, "Something went wrong. You were not charged. Please try again.")
+            return redirect("/")
+
+            # Display a very generic error to the user, and maybe send
+            # yourself an email
+            
+        except Exception as e:
+            messages.warning(
+                self.request, "A serious error occurred. We have been notifed.")
+            return redirect("/")
+
+            # Something else happened, completely unrelated to Stripe
+            
+        
+        
+        
+        return redirect("/payment/stripe/")
 
 # def productItem(request):
 #     context = {}

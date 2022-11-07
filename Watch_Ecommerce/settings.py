@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-j06^1q%og-f#6qll-484xf@r*zfxnto7*qc#@dkg!&)$u9^xf-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_LIVE_SECRET_KEY')
 
 # Application definition
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django_countries',
     'crispy_forms',
+    'corsheaders',
 
 ]
 
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Watch_Ecommerce.urls'
