@@ -54,9 +54,14 @@ class CheckoutView(View):
                 order.billing_address = billing_address
                 order.save()
                 # Todo add a redirect to select the payment option
-                return redirect('checkout')
-            messages.warning(self.request, "Failed Checkout")
-            return redirect('checkout')
+                if payment_option == "S":
+                    return redirect('payment', payment_option='stripe')
+                elif payment_option == "P":
+
+                    return redirect('payment', payment_option='paypal')
+                else:
+                    messages.warning(self.request, "Invalid Payment option selected ")
+                    return redirect('checkout')
 
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
@@ -66,7 +71,13 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         #order
-        return render(self.request, 'payment.html')
+        order = Order.objects.get(user = self.request.user, ordered = False)
+        context = {
+                'order': order,
+                'DISPLAY_COUPON_FORM': False,
+                'STRIPE_PUBLIC_KEY' : settings.STRIPE_PUBLIC_KEY
+            }
+        return render(self.request, 'payment.html', context)
     def post(self, *args, **kwargs):
         order = Order.objects.get(user = self.request.user, ordered = False)
         amount=int(order.get_total()*100)

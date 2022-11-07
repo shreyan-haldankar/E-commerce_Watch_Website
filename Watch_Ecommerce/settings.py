@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_LIVE_SECRET_KEY')
-
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 # Application definition
 
 INSTALLED_APPS = [
@@ -63,6 +63,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOW_METHODS = [
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+
+# "https://r.stripe.com",
+# "https://js.stripe.com",
+# "http://localhost:8080",
+# "http://127.0.0.1:9000"
+# ]
 
 ROOT_URLCONF = 'Watch_Ecommerce.urls'
 
