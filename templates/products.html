@@ -49,7 +49,7 @@
     <div class="container">
       
       <!--Navbar-->
-      <nav class="navbc:\Shreyan\Development\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.htmlar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
         <!-- Navbar brand -->
         <span class="navbar-brand">Categories:</span>
@@ -109,7 +109,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="{% static 'assets/watch1.png' %}" class="card-img-top"
+                <img src="{{ item.image.url }}" class="card-img-top"
                   alt="">
                   <a href="{{item.get_absolute_url}}" class="grey-text">
                   <div class="mask rgba-white-slight"></div>

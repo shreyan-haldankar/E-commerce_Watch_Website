@@ -34,7 +34,7 @@ class Item(models.Model):
                              default=("P", 'primary'), max_length=1)
     slug = models.SlugField()
     description = models.TextField(max_length=500)
-
+    image = models.ImageField()
     def __str__(self):
         return self.title
 
